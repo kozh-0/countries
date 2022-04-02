@@ -16,8 +16,6 @@ export const Details = () => {
   const dispatch = useDispatch();
   const {currentCountry, error, status} = useSelector(state => state.details);
 
-  console.log(currentCountry, error, status);
-
   const navigate = useNavigate();
 
   useEffect(() => {
