@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { loadNeighboursByBorder } from '../Redux/details/detailsActions';
 
 const Wrapper = styled.section`
   margin-top: 3rem;
@@ -102,6 +105,15 @@ export const Info = (props) => {
     push,
   } = props;
 
+  const dispatch = useDispatch();
+  const neighbours = useSelector(state => state.details.neighbours);
+
+  useEffect(() => {
+    if (borders.length) {
+      dispatch(loadNeighboursByBorder(borders))
+    }
+  }, [borders, dispatch]);
+
   return (
     <Wrapper>
       <InfoImage src={flag} alt={name} />
@@ -153,9 +165,9 @@ export const Info = (props) => {
             <span>There is no border countries</span>
           ) : (
             <TagGroup>
-              {[].map((b) => (
-                <Tag key={b} onClick={() => push(`/country/${b}`)}>
-                  {b}
+              {neighbours.map((countryName) => (
+                <Tag key={countryName} onClick={() => push(`/country/${countryName}`)}>
+                  {countryName}
                 </Tag>
               ))}
             </TagGroup>

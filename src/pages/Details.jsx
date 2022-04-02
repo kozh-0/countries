@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { IoArrowBack } from 'react-icons/io5';
 import { Button } from '../components/Button';
 import { Info } from '../components/Info';
-import { loadCountryByName } from '../Redux/details/detailsActions';
+import { clearDetails, loadCountryByName } from '../Redux/details/detailsActions';
 
 
 
@@ -22,6 +22,12 @@ export const Details = () => {
 
   useEffect(() => {
     dispatch(loadCountryByName(name));
+
+    // когда уходим со страницы деталей происходит размонтирование
+    // и страницы друг на друга не накладываются
+    return () => {
+      dispatch(clearDetails)
+    }
   }, [name, dispatch])
 
   return (
