@@ -48,3 +48,5 @@ export const Search = () => {
     </InputContainer>
   );
 };
+
+// onChange={debounce((e) => dispatch(setSearch(e.target.value)), 500)} 

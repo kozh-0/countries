@@ -6,6 +6,8 @@ import { selectCountriesInfo, selectVisibleCountries } from '../Redux/Countries/
 import { List } from '../components/List';
 import { Card } from '../components/Card';
 import { Controls } from '../components/Controls';
+import { LinearProgress  } from '@mui/material';
+
 import { loadCountries } from '../Redux/Countries/countryActions';
 
 
@@ -32,7 +34,7 @@ export const HomePage = () => {
       <Controls />
 
       {error && <h2>Can't fetch data</h2>}
-      {status === 'loading' && <h2>Loading...</h2>}
+      {status === 'loading' && <LinearProgress style={{marginTop: '30px'}}/>}
 
       {status === 'received' && (
         <List>
@@ -59,7 +61,7 @@ export const HomePage = () => {
             return (
               <Card
                 key={c.name}
-                onClick={() => navigate(`/country/${c.name}`)}
+                onClick={() => navigate(`/countries/details/${c.name}`)}
                 {...countryInfo}
               />
             );

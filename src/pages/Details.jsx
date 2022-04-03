@@ -2,10 +2,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
-
 import { IoArrowBack } from 'react-icons/io5';
 import { Button } from '../components/Button';
 import { Info } from '../components/Info';
+import { LinearProgress  } from '@mui/material';
+
 import { clearDetails, loadCountryByName } from '../Redux/details/detailsActions';
 
 
@@ -33,7 +34,7 @@ export const Details = () => {
       <Button onClick={() => navigate(-1)}>
         <IoArrowBack /> Back
       </Button>
-      {status === 'loading' && <h2>Loading...</h2>}
+      {status === 'loading' && <LinearProgress style={{marginTop: '30px'}}/>}
       {error && <h2>{error}</h2>}
       {currentCountry && <Info push={navigate} {...currentCountry} />}
     </div>
