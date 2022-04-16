@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 0;
+  padding: 1rem 0;
 `;
 
 const Title = styled(Link).attrs({
@@ -27,13 +27,17 @@ const Title = styled(Link).attrs({
   font-size: var(--fs-sm);
   text-decoration: none;
   font-weight: var(--fw-bold);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const ModeSwitcher = styled.div`
+  display: flex;
   color: var(--colors-text);
   font-size: var(--fs-sm);
   cursor: pointer;
-  // font-weight: var(--fw-bold);
+  font-weight: var(--fw-bold);
   text-transform: capitalize;
 `;
 
@@ -52,14 +56,17 @@ export const Header = () => {
     <HeaderEl>
       <Container>
         <Wrapper>
-          <Title
-            onClick={() => dispatch(clearControls)}
-          >Where is the world?</Title>
+          <Title onClick={() => dispatch(clearControls)}>
+            <img 
+              className='header_img'
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/World_Map_Icon.svg/800px-World_Map_Icon.svg.png" 
+              alt="world" />Where is the world?
+          </Title>
           <ModeSwitcher onClick={toggleTheme}>
             {theme === 'light' ? (
-              <IoMoonOutline size="14px" />
+              <IoMoonOutline size="18px" />
             ) : (
-              <IoMoon size="14px" />
+              <IoMoon size="18px" />
             )}{' '}
             <span style={{ marginLeft: '0.75rem' }}>{theme} Theme</span>
           </ModeSwitcher>

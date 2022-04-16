@@ -20,9 +20,10 @@ export const clearControls = {
 
 
 export const inputDebounceMiddleware = (store) => (next) => (action) => {
+    // в рот ебал, не работает
     if (action.type === SET_SEARCH) {
-        debounce((action) => store.dispatch(setSearch(action.search)), 500)
-        console.log('debounce setSearch');
+        // (debounce(() => console.log('asdas'),300))()
+        debounce(() => store.dispatch(setSearch(action.search)), 500)
     }
     next(action)
 }

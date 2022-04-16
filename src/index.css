@@ -1,4 +1,4 @@
-@import-normalize;
+/* @import-normalize; */
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
 
 * {
@@ -34,9 +34,68 @@ body[data-theme='light'] {
 }
 
 body {
+  height: 100%;
   margin: 0;
   font-family: var(--family);
   color: var(--colors-text);
   font-weight: var(--fw-light);
   background-color: var(--colors-bg);
+}
+
+
+
+main {
+  /* height: calc(100% - 112.72px - 72px); */
+  min-height: 100%;
+}
+
+
+
+
+.pagination{
+  background-color: #fafafa;
+  width: 363px;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+
+
+
+.header_img {
+  width: 120px;
+}
+
+
+ul, ol {
+  list-style-type: none;
+  padding: 0;
+}
+.weather {
+  margin: 15px 0;
+}
+.weather_list li{
+  padding: 7px;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+footer {
+  min-height: calc(2vh);
+}
+.footer_github {
+  display: flex;
+  align-items: center;
+
+
+  text-decoration: none;
+  color: #fff;
+}
+
+.footer_github img {
+  width: 40px;
+  height: 40px;
 }

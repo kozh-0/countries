@@ -7,7 +7,8 @@ import { Button } from '../components/Button';
 import { Info } from '../components/Info';
 import { LinearProgress  } from '@mui/material';
 
-import { clearDetails, loadCountryByName } from '../Redux/details/detailsActions';
+import { clearDetails, loadCountryByName } from '../Redux/Details/detailsActions';
+import Weather from '../components/Weather';
 
 
 
@@ -37,6 +38,7 @@ export const Details = () => {
       {status === 'loading' && <LinearProgress style={{marginTop: '30px'}}/>}
       {error && <h2>{error}</h2>}
       {currentCountry && <Info push={navigate} {...currentCountry} />}
+      {currentCountry && <Weather capitalName={currentCountry.capital}/>}
     </div>
   );
 };

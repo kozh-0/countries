@@ -13,7 +13,7 @@ import { inputDebounceMiddleware } from "./Controls/controlsAction";
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['theme'],
+    whitelist: ['theme', 'controls'],
     blacklist: []
 };
 

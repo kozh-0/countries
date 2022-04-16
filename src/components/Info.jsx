@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { loadNeighboursByBorder } from '../Redux/details/detailsActions';
+import { loadNeighboursByBorder } from '../Redux/Details/detailsActions';
+
 
 const Wrapper = styled.section`
   margin-top: 3rem;
@@ -89,7 +90,9 @@ const Tag = styled.span`
   cursor: pointer;
 `;
 
+
 export const Info = (props) => {
+
   const {
     name,
     nativeName,
@@ -112,6 +115,8 @@ export const Info = (props) => {
     if (borders.length) {
       dispatch(loadNeighboursByBorder(borders))
     }
+
+
   }, [borders, dispatch]);
 
   return (

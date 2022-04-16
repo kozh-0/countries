@@ -1,17 +1,24 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { selectCountriesInfo, selectVisibleCountries } from '../Redux/Countries/countrySelector';
 
 import { List } from '../components/List';
 import { Card } from '../components/Card';
 import { Controls } from '../components/Controls';
-import { LinearProgress  } from '@mui/material';
+import { LinearProgress, Pagination } from '@mui/material';
 
 import { loadCountries } from '../Redux/Countries/countryActions';
 
 
+
+
+
+
 export const HomePage = () => {
+
+
+
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -19,6 +26,17 @@ export const HomePage = () => {
   const countries = useSelector(state => selectVisibleCountries(state, {search, region}));
   const {status, error, qty} = useSelector(selectCountriesInfo);
 
+  /* const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(20);
+// 250
+  // const indexOfLastPost = useSelector(state => state.countries.list.length);
+  const indexOfLastPost = 250;
+  const indexOffFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = countries.slice(indexOffFirstPost, indexOfLastPost);
+ */
+
+  const tose = countries.length;
+  // console.log(tose);
 
   // qty изначально 0, потом меняется при загрузке стран
   // поэтому рендер происходит 2 раза, не круто
@@ -66,8 +84,14 @@ export const HomePage = () => {
               />
             );
           })}
-        </List>
+          
+        </List> 
       )}
+      {/* <div className='pagination'>
+        <Pagination 
+              count={tose}  />
+        
+      </div> */}
     </>
   );
 };
