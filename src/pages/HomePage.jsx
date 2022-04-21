@@ -35,7 +35,7 @@ export const HomePage = () => {
   const currentPosts = countries.slice(indexOffFirstPost, indexOfLastPost);
  */
 
-  const tose = countries.length;
+  // const tose = countries.length;
   // console.log(tose);
 
   // qty изначально 0, потом меняется при загрузке стран
@@ -52,7 +52,11 @@ export const HomePage = () => {
       <Controls />
 
       {error && <h2>Can't fetch data</h2>}
-      {status === 'loading' && <LinearProgress style={{marginTop: '30px'}}/>}
+      {status === 'loading' && <LinearProgress 
+                                  style={{marginTop: '60px',
+                                          height: '10px',
+                                          borderRadius: '10px'
+                                          }}/>}
 
       {status === 'received' && (
         <List>

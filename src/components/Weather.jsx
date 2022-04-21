@@ -2,21 +2,24 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetWeather, setCapitalWeather } from '../Redux/Weather/weatherActions';
 
+
 export default function Weather({capitalName}) {
 
-    console.log(useSelector(state => state.weather));
-    const {
-        currentConditions,
-        latitude,
-        longitude,
-        description,
-        // days
+  const {
+    currentConditions,
+    latitude,
+    longitude,
+    description,
+    days
+    
+  } = useSelector(state => state.weather);
+  const dispatch = useDispatch();
 
-    } = useSelector(state => state.weather);
-    // console.log(new Date(1650043026 + 840000));
-    // console.log(currentConditions);
-    const dispatch = useDispatch();
+  // console.log(useSelector(state => state.weather));
 
+    
+    // const [date] = useState(currentConditions && new Date((+currentConditions.datetimeEpoch + 1700) * 1000));
+    // console.log(date);
     useEffect(() => {
         dispatch(setCapitalWeather(capitalName))
         
@@ -25,16 +28,30 @@ export default function Weather({capitalName}) {
 
 
   return (
-    <div className='weather'>
-      <h1>{capitalName} info & weather</h1>
-      <ul className='weather_list'>
-        <li><strong>Latitude</strong>: {latitude}</li>
-        <li><strong>Longitude</strong>: {longitude}</li>
-        {currentConditions && <li><strong>Forecast</strong>: {currentConditions.conditions}; <br />{description}</li>}
-        {/* <li>{currentConditions && <p>Time: {new Date(+currentConditions.datetimeEpoch)}</p>}</li> */}
-        {currentConditions && <li><strong>Sunrise</strong>: {currentConditions.sunrise}</li>}
-        {currentConditions && <li><strong>Sunset</strong>: {currentConditions.sunset}</li>}
-      </ul>
-    </div>
+    <section className='details_bottom'>
+      <div className='details_bottom_weather'>
+        <h1>{capitalName}</h1>
+          <ul className='details_bottom_weather_list'>
+            {currentConditions && <li><strong>Coordinates</strong>: {latitude}, {longitude}</li>} <br/>
+            {currentConditions && <li><strong>Time</strong>: {currentConditions.datetime}</li>} <br/>
+            {currentConditions && <li><strong>Forecast</strong>: {currentConditions.conditions}; <br />{description}</li>}<br/>
+            {currentConditions && <li><strong>Sunrise</strong>: {currentConditions.sunrise}</li>}<br/>
+            {currentConditions && <li><strong>Sunset</strong>: {currentConditions.sunset}</li>}<br/>
+          </ul>
+      </div>
+
+      <div className='details_bottom_weather'>
+        <h1>Weather today</h1>
+          <ul className='details_bottom_weather_list'>
+            {days && <li><strong>Description</strong>: {days[0].description}</li>} <br/>
+            {days && <li><strong>Temperature</strong>: {days[0].temp} °C</li>}<br/>
+            {days && <li><strong>Feels like</strong>: {days[0].feelslike} °C</li>} <br/>
+            {days && <li><strong>Humidity</strong>: {days[0].humidity} %</li>} <br/>
+            {days && <li><strong>Pressure</strong>: {days[0].pressure} hPa</li>} <br/>
+            {days && <li><strong>Windspeed</strong>: {days[0].windspeed} km/h</li>} <br/>
+            {days && <li><strong>Visibility</strong>: {days[0].visibility} km</li>} <br/>
+          </ul>
+      </div>
+    </section>
   )
 }

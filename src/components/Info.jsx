@@ -24,8 +24,9 @@ const Wrapper = styled.section`
 const InfoImage = styled.img`
   display: block;
   width: 100%;
-  height: 100%;
+  // height: 100%;
   object-fit: contain;
+  box-shadow: 0px 0px 10px 4px rgba(34, 60, 80, 0.2);
 `;
 
 const InfoTitle = styled.h1`

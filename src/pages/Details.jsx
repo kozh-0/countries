@@ -9,6 +9,7 @@ import { LinearProgress  } from '@mui/material';
 
 import { clearDetails, loadCountryByName } from '../Redux/Details/detailsActions';
 import Weather from '../components/Weather';
+import { borderRadius } from '@mui/system';
 
 
 
@@ -35,7 +36,11 @@ export const Details = () => {
       <Button onClick={() => navigate(-1)}>
         <IoArrowBack /> Back
       </Button>
-      {status === 'loading' && <LinearProgress style={{marginTop: '30px'}}/>}
+      {status === 'loading' && <LinearProgress 
+                                  style={{marginTop: '60px',
+                                          height: '10px',
+                                          borderRadius: '10px'
+                                          }}/>}
       {error && <h2>{error}</h2>}
       {currentCountry && <Info push={navigate} {...currentCountry} />}
       {currentCountry && <Weather capitalName={currentCountry.capital}/>}
