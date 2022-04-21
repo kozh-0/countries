@@ -16,6 +16,9 @@ export default function Weather({capitalName}) {
   const dispatch = useDispatch();
 
   // console.log(useSelector(state => state.weather));
+  const theme = useSelector(state => state.theme);
+  console.log(theme);
+  
 
     
     // const [date] = useState(currentConditions && new Date((+currentConditions.datetimeEpoch + 1700) * 1000));
@@ -30,7 +33,7 @@ export default function Weather({capitalName}) {
   return (
     <section className='details_bottom'>
       <div className='details_bottom_weather'>
-        <h1>{capitalName}</h1>
+        {theme === 'light' ? <h1 style={{color: 'black', background: '#ff9800'}}>{capitalName}</h1> : <h1 style={{color: 'white'}}>{capitalName}</h1>}
           <ul className='details_bottom_weather_list'>
             {currentConditions && <li><strong>Coordinates</strong>: {latitude}, {longitude}</li>} <br/>
             {currentConditions && <li><strong>Time</strong>: {currentConditions.datetime}</li>} <br/>
@@ -41,7 +44,7 @@ export default function Weather({capitalName}) {
       </div>
 
       <div className='details_bottom_weather'>
-        <h1>Weather today</h1>
+        {theme === 'light' ? <h1 style={{color: 'black', background: '#ff9800'}}>Weather today</h1> : <h1 style={{color: 'white'}}>Weather today</h1>}
           <ul className='details_bottom_weather_list'>
             {days && <li><strong>Description</strong>: {days[0].description}</li>} <br/>
             {days && <li><strong>Temperature</strong>: {days[0].temp} °C</li>}<br/>

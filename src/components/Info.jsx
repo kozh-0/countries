@@ -29,11 +29,6 @@ const InfoImage = styled.img`
   box-shadow: 0px 0px 10px 4px rgba(34, 60, 80, 0.2);
 `;
 
-const InfoTitle = styled.h1`
-  margin: 0;
-  font-weight: var(--fw-normal);
-`;
-
 const ListGroup = styled.div`
   display: flex;
   flex-direction: column;
@@ -125,7 +120,12 @@ export const Info = (props) => {
       <InfoImage src={flag} alt={name} />
 
       <div>
-        <InfoTitle>{name}</InfoTitle>
+        {
+          useSelector(state => state.theme) === 'light' ? 
+            <h1 style={{color: 'black', background: '#ff9800', marginBottom: '15px'}}>{name}</h1>
+              : 
+            <h1 style={{color: 'white', marginBottom: '15px'}}>{name}</h1>
+        }
         <ListGroup>
           <List>
             <ListItem>
