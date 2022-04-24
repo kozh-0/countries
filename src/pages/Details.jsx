@@ -9,7 +9,6 @@ import { LinearProgress  } from '@mui/material';
 
 import { clearDetails, loadCountryByName } from '../Redux/Details/detailsActions';
 import Weather from '../components/Weather';
-import { borderRadius } from '@mui/system';
 
 
 

@@ -34,11 +34,8 @@ const Input = styled.input.attrs({
 `;
 
 export const Search = () => {
-
   const dispatch = useDispatch();
   const search = useSelector(state => state.controls.search);
-
-
 
   return (
     <InputContainer>

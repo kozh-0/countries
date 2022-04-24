@@ -17,8 +17,6 @@ import { loadCountries } from '../Redux/Countries/countryActions';
 
 export const HomePage = () => {
 
-
-
   const navigate = useNavigate();
 
   const dispatch = useDispatch();

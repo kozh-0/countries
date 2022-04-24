@@ -5,7 +5,7 @@ import { loadNeighboursByBorder } from '../Redux/Details/detailsActions';
 
 
 const Wrapper = styled.section`
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   width: 100%;
   display: grid;
   grid-template-columns: 100%;
@@ -56,7 +56,7 @@ const ListItem = styled.li`
 `;
 
 const Meta = styled.div`
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   display: flex;
   gap: 1.5rem;
   flex-direction: column;
@@ -79,11 +79,17 @@ const TagGroup = styled.div`
 `;
 
 const Tag = styled.span`
-  padding: 0 1rem;
+  padding: .5rem 1rem;
   background-color: var(--colors-ui-base);
   box-shadow: var(--shadow);
   line-height: 1.5;
   cursor: pointer;
+  border-radius: 10px;
+
+  
+  :hover {
+    box-shadow: rgba(255, 0, 0, 1) 0 0 10px;
+  }
 `;
 
 
@@ -165,8 +171,12 @@ export const Info = (props) => {
             </ListItem>
           </List>
         </ListGroup>
+        {useSelector(state => state.theme) === 'light' ? 
+          <h1 style={{color: 'black', background: '#ff9800', marginTop: '1rem'}}>Border Countries</h1> 
+            : 
+          <h1 style={{color: 'white', marginTop: '1rem'}}>Border Countries</h1>
+        }
         <Meta>
-          <b>Border Countries</b>
           {!borders.length ? (
             <span>There is no border countries</span>
           ) : (
