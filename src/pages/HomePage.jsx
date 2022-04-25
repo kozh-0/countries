@@ -93,6 +93,7 @@ export const HomePage = () => {
               document.documentElement.scrollTop = 0;
             }}
             color="primary"
+            size='medium'
           /> 
         </div>
       : null}
