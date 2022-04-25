@@ -69,9 +69,15 @@ main {
 
 .pagination{
   background-color: #fafafa;
-  width: 363px;
+  border-radius: 10px;
+  max-width: 340px;
   margin: 0 auto;
   padding: 10px 0;
+}
+
+.MuiPagination-ul.css-wjh20t-MuiPagination-ul {
+  justify-content: center;
+  flex-wrap: nowrap;
 }
 
 
@@ -92,7 +98,7 @@ ul, ol {
 .details_bottom {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .details_bottom_weather {
   margin: 30px 0 15px;
@@ -131,10 +137,4 @@ h1 {
   border-radius: 5px;
   background-color: rgb(66, 75, 140)
 
-}
-
-@media (max-width: 900px) {
-  .details_bottom {
-    justify-content: space-between;
-  }
 }

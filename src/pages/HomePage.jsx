@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { selectCountriesInfo, selectVisibleCountries } from '../Redux/Countries/countrySelector';
 
 import { List } from '../components/List';
@@ -9,6 +9,7 @@ import { Controls } from '../components/Controls';
 import { LinearProgress, Pagination } from '@mui/material';
 
 import { loadCountries } from '../Redux/Countries/countryActions';
+import { setPage } from '../Redux/Controls/controlsAction';
 
 
 
@@ -20,21 +21,14 @@ export const HomePage = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  const {search, region} = useSelector(state => state.controls);
+  const {search, region, page} = useSelector(state => state.controls);
   const countries = useSelector(state => selectVisibleCountries(state, {search, region}));
   const {status, error, qty} = useSelector(selectCountriesInfo);
 
-  /* const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(20);
-// 250
-  // const indexOfLastPost = useSelector(state => state.countries.list.length);
-  const indexOfLastPost = 250;
-  const indexOffFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = countries.slice(indexOffFirstPost, indexOfLastPost);
- */
 
-  // const tose = countries.length;
-  // console.log(tose);
+  const splicedCountries = page === 1 ? countries.slice(0, (page*10)) : countries.slice((page*10), (page*10 + 10));
+
+  console.log(splicedCountries);
 
   // qty изначально 0, потом меняется при загрузке стран
   // поэтому рендер происходит 2 раза, не круто
@@ -58,7 +52,7 @@ export const HomePage = () => {
 
       {status === 'received' && (
         <List>
-          {countries.map((c) => {
+          {splicedCountries.map((c) => {
             const countryInfo = {
               img: c.flags.png,
               name: c.name,
@@ -89,11 +83,19 @@ export const HomePage = () => {
           
         </List> 
       )}
-      {/* <div className='pagination'>
-        <Pagination 
-              count={tose}  />
-        
-      </div> */}
+      {!search ? 
+        <div className='pagination'>
+          <Pagination
+            count={Math.ceil(countries.length / 10) - 1}
+            page={page}
+            onChange={(_, num) => {
+              dispatch(setPage(num))
+              document.documentElement.scrollTop = 0;
+            }}
+            color="primary"
+          /> 
+        </div>
+      : null}
     </>
   );
 };

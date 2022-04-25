@@ -178,7 +178,7 @@ export const Info = (props) => {
         }
         <Meta>
           {!borders.length ? (
-            <span>There is no border countries</span>
+            <h3>There is no border countries ¯\_(ツ)_/¯</h3>
           ) : (
             <TagGroup>
               {neighbours.map((countryName) => (
