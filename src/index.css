@@ -76,8 +76,8 @@ main {
 }
 
 .MuiPagination-ul.css-wjh20t-MuiPagination-ul {
-  justify-content: center;
-  flex-wrap: nowrap;
+  justify-content: center !important;
+  flex-wrap: nowrap !important;
 }
 
 
