@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-
 import { IoSearch } from 'react-icons/io5';
 import { setSearch } from '../Redux/Controls/controlsAction';
 
@@ -33,10 +32,11 @@ const Input = styled.input.attrs({
   background-color: var(--colors-ui-base);
 `;
 
+
 export const Search = () => {
   const dispatch = useDispatch();
   const search = useSelector(state => state.controls.search);
-
+  
   return (
     <InputContainer>
       <IoSearch />
@@ -48,3 +48,27 @@ export const Search = () => {
 };
 
 // onChange={debounce((e) => dispatch(setSearch(e.target.value)), 500)} 
+
+
+
+
+
+/*{ <div style={{position: 'relative'}}>
+<Button
+>Search</Button>
+
+</div> }*/
+
+
+
+/* const Button = styled.button`
+  position: absolute;
+  height: 50px;
+  width: 70px;
+  bottom: -25px;
+  left: -20px;
+  // border: 1px solid #kkk;
+  background-color: var(--colors-ui-button);
+  color: var(--colors-text);
+  border-radius: 10px;
+` */

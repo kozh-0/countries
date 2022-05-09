@@ -81,7 +81,7 @@ export const HomePage = () => {
           
         </List> 
       )}
-      {!search ? 
+      {!search && splicedCountries.length ? 
         <div className='pagination'>
           <Pagination
             count={Math.ceil(countries.length / 10) - 1}
