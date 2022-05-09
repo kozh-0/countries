@@ -14,8 +14,6 @@ import { setPage } from '../Redux/Controls/controlsAction';
 
 
 
-
-
 export const HomePage = () => {
 
   const navigate = useNavigate();
@@ -27,7 +25,7 @@ export const HomePage = () => {
 
 
   const splicedCountries = page === 1 ? countries.slice(0, (page*10)) : countries.slice((page*10), (page*10 + 10));
-
+  console.log(splicedCountries);
   // qty изначально 0, потом меняется при загрузке стран
   // поэтому рендер происходит 2 раза, не круто
   useEffect(() => {
@@ -40,7 +38,6 @@ export const HomePage = () => {
   return (
     <>
       <Controls />
-
       {error && <h2>Can't fetch data</h2>}
       {status === 'loading' && <LinearProgress 
                                   style={{marginTop: '60px',
@@ -50,7 +47,7 @@ export const HomePage = () => {
 
       {status === 'received' && (
         <List>
-          {splicedCountries.map((c) => {
+          {splicedCountries.length ? splicedCountries.map((c) => {
             const countryInfo = {
               img: c.flags.png,
               name: c.name,
@@ -77,8 +74,7 @@ export const HomePage = () => {
                 {...countryInfo}
               />
             );
-          })}
-          
+          }) : <h2 style={{position: 'absolute', right: '40%', left: '40%', textAlign: 'center'}}>No result ¯\_(ツ)_/¯</h2>}
         </List> 
       )}
       {!search && splicedCountries.length ? 

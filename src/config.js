@@ -10,12 +10,8 @@ export const filterByCode = (codes) => BASE_URL + 'alpha?codes=' + codes.join(',
 
 
 // Weather
-const API_KEY = process.env.REACT_APP_API_KEY;
-
-function API_Closure(API_KEY) {
+export const getCapitalWeather = (function API_Closure(API_KEY) {
     return function(capital) {
         return `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${capital}?unitGroup=metric&key=${API_KEY}&contentType=json`;
     }
-}
-
-export const getCapitalWeather = API_Closure(API_KEY);
+})( process.env.REACT_APP_API_KEY );
