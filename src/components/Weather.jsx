@@ -15,14 +15,8 @@ export default function Weather({capitalName}) {
   } = useSelector(state => state.weather);
   const dispatch = useDispatch();
 
-  // console.log(useSelector(state => state.weather));
   const theme = useSelector(state => state.theme);
-  console.log(theme);
   
-
-    
-    // const [date] = useState(currentConditions && new Date((+currentConditions.datetimeEpoch + 1700) * 1000));
-    // console.log(date);
     useEffect(() => {
         dispatch(setCapitalWeather(capitalName))
         

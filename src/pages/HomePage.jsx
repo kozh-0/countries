@@ -28,8 +28,6 @@ export const HomePage = () => {
 
   const splicedCountries = page === 1 ? countries.slice(0, (page*10)) : countries.slice((page*10), (page*10 + 10));
 
-  console.log(splicedCountries);
-
   // qty изначально 0, потом меняется при загрузке стран
   // поэтому рендер происходит 2 раза, не круто
   useEffect(() => {

@@ -117,8 +117,6 @@ export const Info = (props) => {
     if (borders.length) {
       dispatch(loadNeighboursByBorder(borders))
     }
-
-
   }, [borders, dispatch]);
 
   return (
